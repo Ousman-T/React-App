@@ -1,11 +1,17 @@
 import ProductListItem from './ProductListItem';
-function ProductList(props) {
-    const { products, addToCart, cart } = props
-    return products.map(product => <ProductListItem 
-        product={product} 
-        key={product.id} 
-        addToCart={addToCart} 
-        cart={cart}/>)
+// context
+import { ProductContext } from '../App';
+import { useContext } from "react";
+
+
+function ProductList() {
+    // consume data from context
+    const productContextValue = useContext(ProductContext);
+    console.log(productContextValue.data);
+    return productContextValue.data.map(product => <ProductListItem
+        product={product}
+        key={product.id}
+    />)
 }
 
 export default ProductList;
